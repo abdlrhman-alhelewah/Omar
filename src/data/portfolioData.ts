@@ -1,3 +1,5 @@
+import { getAssetUrl } from '../utils/assetUrl';
+
 export interface Project {
   id: string;
   client: string;
@@ -42,7 +44,7 @@ export const PERSONAL_INFO = {
   fullName: "Omar Mohamed Elsayed ElBasstawisy",
   title: "Media Buyer & Digital Marketer",
   shortTitle: "Mid-Level Media Buyer",
-  profilePhoto: "/assets/aistudio/1000000631.jpg_9780f390.jpeg",
+  profilePhoto: getAssetUrl("assets/aistudio/1000000631.jpg_9780f390.jpeg"),
   summary: "Results-driven Media Buyer & Digital Marketer with 2 years of experience planning, launching, and optimizing performance campaigns across Meta, TikTok, and Google Ads. Focused on lead generation, ROI, and business growth through strategic media planning, budget allocation, and continuous A/B testing.",
   portfolioStatement: "Scaled 7+ B2B and B2C clients across Egypt, the Gulf region (Saudi Arabia & UAE), and Europe.",
   email: "omar.bastawissy@gmail.com",
@@ -55,7 +57,7 @@ export const PERSONAL_INFO = {
   dateOfBirth: "03/28/1996",
   nationality: "Egyptian",
   maritalStatus: "Single",
-  cvPdfPath: "/assets/aistudio/CV_Omar_Mohamed_Elsayed_ElBasstawisy_cee73ba6.pdf",
+  cvPdfPath: getAssetUrl("assets/aistudio/CV_Omar_Mohamed_Elsayed_ElBasstawisy_cee73ba6.pdf"),
 };
 
 export const CORE_METRICS = [
@@ -82,13 +84,13 @@ export const CORE_METRICS = [
 ];
 
 export const CLIENT_LOGOS = [
-  { name: "IHF", logo: "/logos/ihf_logo.png", industry: "International Sports" },
-  { name: "Concrete Surgeons", logo: "/logos/cs_logo.png", industry: "Construction & Engineering" },
-  { name: "United Guides Travel", logo: "/logos/ugt_logo.png", industry: "Inbound Tourism" },
-  { name: "Grand Heights", logo: "/logos/grand_heights_logo.png", industry: "Luxury Real Estate" },
-  { name: "IFCG", logo: "/logos/ifcg_logo.png", industry: "Food Manufacturing (B2B)" },
-  { name: "MasterMind", logo: "/logos/mastermind_logo.png", industry: "Business Consulting" },
-  { name: "CarDip", logo: "/logos/cardip_logo.png", industry: "Automotive Customization" },
+  { name: "IHF", logo: getAssetUrl("logos/ihf_logo.png"), industry: "International Sports" },
+  { name: "Concrete Surgeons", logo: getAssetUrl("logos/cs_logo.png"), industry: "Construction & Engineering" },
+  { name: "United Guides Travel", logo: getAssetUrl("logos/ugt_logo.png"), industry: "Inbound Tourism" },
+  { name: "Grand Heights", logo: getAssetUrl("logos/grand_heights_logo.png"), industry: "Luxury Real Estate" },
+  { name: "IFCG", logo: getAssetUrl("logos/ifcg_logo.png"), industry: "Food Manufacturing (B2B)" },
+  { name: "MasterMind", logo: getAssetUrl("logos/mastermind_logo.png"), industry: "Business Consulting" },
+  { name: "CarDip", logo: getAssetUrl("logos/cardip_logo.png"), industry: "Automotive Customization" },
 ];
 
 export const PROJECTS: Project[] = [
@@ -97,7 +99,7 @@ export const PROJECTS: Project[] = [
     client: "IHF (International Handball Federation)",
     industry: "International Sports Governing Body",
     type: "B2C",
-    logo: "/logos/ihf_logo.png",
+    logo: getAssetUrl("logos/ihf_logo.png"),
     headlineMetric: "98.2M+",
     headlineMetricLabel: "Total Video Views",
     objective: "Manage live streaming, digital publishing, and content coordination across official channels to boost tournament viewership and audience interaction.",
@@ -108,7 +110,7 @@ export const PROJECTS: Project[] = [
       { label: "Community", value: "340K+ IG / 72K+ X", context: "328,030 profile visits" }
     ],
     platforms: ["Instagram (@ihfworldhandball)", "X (@ihfhandball)", "Live Streaming"],
-    proofSlide: "/portfolio_slides/slide_37.png",
+    proofSlide: getAssetUrl("portfolio_slides/slide_37.png"),
     proofTitle: "IHF Analytics: 98.2M Views & 11.4M Viewers (Slide 37)",
     tags: ["Sports", "Live Streaming", "B2C", "Global"]
   },
@@ -117,7 +119,7 @@ export const PROJECTS: Project[] = [
     client: "Concrete Surgeons (CS)",
     industry: "Specialized Construction & Contracting",
     type: "B2B / B2C",
-    logo: "/logos/cs_logo.png",
+    logo: getAssetUrl("logos/cs_logo.png"),
     headlineMetric: "High-Intent",
     headlineMetricLabel: "B2B Contractor Pipeline",
     objective: "Generate consistent, qualified B2B leads from contractors and civil engineers while eliminating wasted broad spend through precision audience targeting.",
@@ -127,7 +129,7 @@ export const PROJECTS: Project[] = [
       { label: "Brand Presence", value: "Category Leader", context: "Strengthened presence among project managers" }
     ],
     platforms: ["Meta Ads", "Instagram B2B", "Lead Forms"],
-    proofSlide: "/portfolio_slides/slide_17.png",
+    proofSlide: getAssetUrl("portfolio_slides/slide_17.png"),
     proofTitle: "B2B Lead Sets & Audience Targeting Performance (Slide 17)",
     tags: ["B2B", "Construction", "Lead Gen"]
   },
@@ -136,7 +138,7 @@ export const PROJECTS: Project[] = [
     client: "United Guides Travel (UGT)",
     industry: "Inbound Tourism & Tours",
     type: "B2C",
-    logo: "/logos/ugt_logo.png",
+    logo: getAssetUrl("logos/ugt_logo.png"),
     headlineMetric: "622",
     headlineMetricLabel: "Leads at $2.53 CPL",
     objective: "Acquire high-intent international tourists searching for Egypt travel experiences while maximizing ROAS and minimizing acquisition costs.",
@@ -146,7 +148,7 @@ export const PROJECTS: Project[] = [
       { label: "Campaign Reach", value: "292,399", context: "$2,200.22 total spend" }
     ],
     platforms: ["Meta Ads", "Instagram Ads", "Messenger Funnels"],
-    proofSlide: "/portfolio_slides/slide_18.png",
+    proofSlide: getAssetUrl("portfolio_slides/slide_18.png"),
     proofTitle: "Meta Ads Dashboard: 622 Leads @ $2.53 CPL & Messaging Costs (Slide 18)",
     tags: ["Tourism", "International", "B2C"]
   },
@@ -155,7 +157,7 @@ export const PROJECTS: Project[] = [
     client: "Grand Heights (6th of October)",
     industry: "Luxury Real Estate",
     type: "B2C",
-    logo: "/logos/grand_heights_logo.png",
+    logo: getAssetUrl("logos/grand_heights_logo.png"),
     headlineMetric: "97",
     headlineMetricLabel: "High-Ticket Leads @ 175 EGP",
     objective: "Generate high-intent buyer inquiries for luxury residential properties in 6th of October City, including Egyptian expatriates in Saudi Arabia.",
@@ -165,7 +167,7 @@ export const PROJECTS: Project[] = [
       { label: "Total Spent", value: "69,732.71 EGP", context: "Rigorous lead qualification" }
     ],
     platforms: ["Meta Ads Manager", "Facebook Lead Forms", "Instagram"],
-    proofSlide: "/portfolio_slides/slide_16.png",
+    proofSlide: getAssetUrl("portfolio_slides/slide_16.png"),
     proofTitle: "Meta Ads Dashboard: Grand Heights 47 Campaigns & 97 Leads (Slide 16)",
     tags: ["Real Estate", "Luxury", "B2C"]
   },
@@ -174,7 +176,7 @@ export const PROJECTS: Project[] = [
     client: "IFCG - Egypt",
     industry: "Food Manufacturing & Distribution",
     type: "B2B",
-    logo: "/logos/ifcg_logo.png",
+    logo: getAssetUrl("logos/ifcg_logo.png"),
     headlineMetric: "655K+",
     headlineMetricLabel: "B2B Professionals Reached",
     objective: "Generate commercial distribution inquiries by targeting food wholesalers, retail chains, and foodservice procurement directors across Egypt and MENA.",
@@ -184,7 +186,7 @@ export const PROJECTS: Project[] = [
       { label: "Distributor Leads", value: "34+ Bulk RFQs", context: "High-value commercial partnerships" }
     ],
     platforms: ["Meta Ads", "Instagram B2B", "Audience Network"],
-    proofSlide: "/portfolio_slides/slide_17.png",
+    proofSlide: getAssetUrl("portfolio_slides/slide_17.png"),
     proofTitle: "Meta Ads Dashboard: IFCG 655K Reach & 177K Spend (Slide 17)",
     tags: ["B2B", "FMCG", "Distribution"]
   },
@@ -193,7 +195,7 @@ export const PROJECTS: Project[] = [
     client: "MasterMind",
     industry: "Marketing & Business Solutions",
     type: "B2B",
-    logo: "/logos/mastermind_logo.png",
+    logo: getAssetUrl("logos/mastermind_logo.png"),
     headlineMetric: "UAE & GCC",
     headlineMetricLabel: "Executive Pipeline",
     objective: "Capture corporate decision-makers and founders seeking strategic marketing solutions across the UAE and Gulf region.",
@@ -203,7 +205,7 @@ export const PROJECTS: Project[] = [
       { label: "Optimization", value: "Audience Segmentation", context: "Continuous creative iteration" }
     ],
     platforms: ["Meta Ads", "LinkedIn", "Instagram"],
-    proofSlide: "/portfolio_slides/slide_19.png",
+    proofSlide: getAssetUrl("portfolio_slides/slide_19.png"),
     proofTitle: "GCC & UAE Campaign Performance Breakdown (Slide 19)",
     tags: ["B2B", "UAE", "GCC"]
   },
@@ -212,7 +214,7 @@ export const PROJECTS: Project[] = [
     client: "CarDip (Saudi Arabia)",
     industry: "Automotive Customization",
     type: "B2C",
-    logo: "/logos/cardip_logo.png",
+    logo: getAssetUrl("logos/cardip_logo.png"),
     headlineMetric: "2,895+",
     headlineMetricLabel: "Add to Basket Actions",
     objective: "Drive demand for peelable automotive paint and luxury vehicle protection across Saudi Arabia through high-volume Snapchat and TikTok campaigns.",
@@ -222,7 +224,7 @@ export const PROJECTS: Project[] = [
       { label: "TikTok KSA Sales", value: "142 Purchases", context: "70.85 SAR Cost Per Conversion" }
     ],
     platforms: ["Snapchat Ads", "TikTok Ads Manager", "Meta Ads"],
-    proofSlide: "/portfolio_slides/slide_24.png",
+    proofSlide: getAssetUrl("portfolio_slides/slide_24.png"),
     proofTitle: "Snapchat Ads Manager: $5,148 Spent & 2,895+ Add to Basket (Slide 24)",
     tags: ["Automotive", "Saudi Arabia", "Snapchat", "TikTok"]
   }
@@ -239,7 +241,7 @@ export const PLATFORM_DASHBOARDS = [
       { label: "IFCG B2B Reach", value: "655,556 Reach" },
       { label: "Total Tracked Spend", value: "249,000+ EGP & $2,200+" }
     ],
-    proofImage: "/portfolio_slides/slide_16.png",
+    proofImage: getAssetUrl("portfolio_slides/slide_16.png"),
     proofTitle: "Meta Ads Manager - Grand Heights Dashboard (Slide 16)"
   },
   {
@@ -252,7 +254,7 @@ export const PLATFORM_DASHBOARDS = [
       { label: "Verified Conversions", value: "4,485" },
       { label: "Average CPA", value: "58.85 EGP" }
     ],
-    proofImage: "/portfolio_slides/slide_21.png",
+    proofImage: getAssetUrl("portfolio_slides/slide_21.png"),
     proofTitle: "TikTok Ads Manager - 33 Campaigns & 4,485 Conversions (Slide 21)"
   },
   {
@@ -265,7 +267,7 @@ export const PLATFORM_DASHBOARDS = [
       { label: "Paid Impressions", value: "595,462" },
       { label: "Total Ad Spend", value: "$5,148.48" }
     ],
-    proofImage: "/portfolio_slides/slide_24.png",
+    proofImage: getAssetUrl("portfolio_slides/slide_24.png"),
     proofTitle: "Snapchat Ads Manager - Ramadan Catalog Dashboard (Slide 24)"
   },
   {
@@ -278,7 +280,7 @@ export const PLATFORM_DASHBOARDS = [
       { label: "Lead Gen Form Inquiries", value: "11 Leads" },
       { label: "Page Follows Generated", value: "64 Follows" }
     ],
-    proofImage: "/portfolio_slides/slide_26.png",
+    proofImage: getAssetUrl("portfolio_slides/slide_26.png"),
     proofTitle: "LinkedIn Campaign Manager - B2B Leads Dashboard (Slide 26)"
   }
 ];
