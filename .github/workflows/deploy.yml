@@ -31,10 +31,24 @@ jobs:
         with:
           node-version: 20
 
+      - name: Locate project directory
+        id: locate
+        run: |
+          if [ -f "./package.json" ]; then
+            echo "dir=." >> "$GITHUB_OUTPUT"
+          elif [ -f "./Omar/package.json" ]; then
+            echo "dir=./Omar" >> "$GITHUB_OUTPUT"
+          else
+            PKG_DIR=$(find . -maxdepth 3 -name "package.json" -not -path "*/node_modules/*" | head -n 1 | xargs -r dirname)
+            echo "dir=${PKG_DIR:-.}" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Install dependencies
+        working-directory: ${{ steps.locate.outputs.dir }}
         run: npm install
 
       - name: Build project
+        working-directory: ${{ steps.locate.outputs.dir }}
         run: npm run build
 
       - name: Setup Pages
@@ -43,7 +57,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          path: ${{ steps.locate.outputs.dir }}/dist
 
       - name: Deploy to GitHub Pages
         id: deployment
