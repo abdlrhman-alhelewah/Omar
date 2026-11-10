@@ -78,7 +78,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProofS
               <div>
                 {/* Top: Brand Logo & Segment Badge */}
                 <div className="flex items-center justify-between gap-3 pb-4 mb-4 border-b border-slate-100">
-                  <div className="h-10 w-28 bg-slate-50 border border-slate-200 rounded-lg p-1.5 flex items-center justify-center overflow-hidden">
+                  <div className="h-12 w-32 bg-white border border-slate-200/90 rounded-lg p-2 flex items-center justify-center overflow-hidden shadow-2xs">
                     <img
                       src={project.logo}
                       alt={`${project.client} Logo`}

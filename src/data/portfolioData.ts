@@ -84,13 +84,14 @@ export const CORE_METRICS = [
 ];
 
 export const CLIENT_LOGOS = [
-  { name: "IHF", logo: getAssetUrl("logos/ihf_logo.png"), industry: "International Sports" },
+  { name: "IHF", logo: getAssetUrl("logos/ihf_hd.png"), industry: "International Sports" },
+  { name: "United Guides Travel", logo: getAssetUrl("logos/ugt_hd.png"), industry: "Inbound Tourism" },
+  { name: "Grand Heights", logo: getAssetUrl("logos/grand_heights_hd.png"), industry: "Luxury Real Estate" },
+  { name: "IFCG", logo: getAssetUrl("logos/ifcg_hd.png"), industry: "Food Manufacturing (B2B)" },
+  { name: "MasterMind", logo: getAssetUrl("logos/mastermind_hd.png"), industry: "Business Consulting" },
+  { name: "CarDip", logo: getAssetUrl("logos/cardip_hd.png"), industry: "Automotive Customization" },
+  { name: "Expo Trust Trade", logo: getAssetUrl("logos/ett_hd.png"), industry: "International Trade & Export" },
   { name: "Concrete Surgeons", logo: getAssetUrl("logos/cs_logo.png"), industry: "Construction & Engineering" },
-  { name: "United Guides Travel", logo: getAssetUrl("logos/ugt_logo.png"), industry: "Inbound Tourism" },
-  { name: "Grand Heights", logo: getAssetUrl("logos/grand_heights_logo.png"), industry: "Luxury Real Estate" },
-  { name: "IFCG", logo: getAssetUrl("logos/ifcg_logo.png"), industry: "Food Manufacturing (B2B)" },
-  { name: "MasterMind", logo: getAssetUrl("logos/mastermind_logo.png"), industry: "Business Consulting" },
-  { name: "CarDip", logo: getAssetUrl("logos/cardip_logo.png"), industry: "Automotive Customization" },
 ];
 
 export const PROJECTS: Project[] = [
@@ -99,7 +100,7 @@ export const PROJECTS: Project[] = [
     client: "IHF (International Handball Federation)",
     industry: "International Sports Governing Body",
     type: "B2C",
-    logo: getAssetUrl("logos/ihf_logo.png"),
+    logo: getAssetUrl("logos/ihf_hd.png"),
     headlineMetric: "98.2M+",
     headlineMetricLabel: "Total Video Views",
     objective: "Manage live streaming, digital publishing, and content coordination across official channels to boost tournament viewership and audience interaction.",
@@ -113,6 +114,120 @@ export const PROJECTS: Project[] = [
     proofSlide: getAssetUrl("portfolio_slides/slide_37.png"),
     proofTitle: "IHF Analytics: 98.2M Views & 11.4M Viewers (Slide 37)",
     tags: ["Sports", "Live Streaming", "B2C", "Global"]
+  },
+  {
+    id: "united-guides-travel",
+    client: "United Guides Travel (UGT)",
+    industry: "Inbound Tourism & Tours",
+    type: "B2C",
+    logo: getAssetUrl("logos/ugt_hd.png"),
+    headlineMetric: "622",
+    headlineMetricLabel: "Leads at $2.53 CPL",
+    objective: "Acquire high-intent international tourists searching for Egypt travel experiences while maximizing ROAS and minimizing acquisition costs.",
+    keyResults: [
+      { label: "Verified Leads", value: "622 Leads", context: "$2.53 average Cost Per Lead" },
+      { label: "Messaging Leads", value: "188+ Inquiries", context: "$1.93 – $2.85 per engaged conversation" },
+      { label: "Campaign Reach", value: "292,399", context: "$2,200.22 total spend" }
+    ],
+    platforms: ["Meta Ads", "Instagram Ads", "Messenger Funnels"],
+    proofSlide: getAssetUrl("portfolio_slides/slide_18.png"),
+    proofTitle: "Meta Ads Dashboard: 622 Leads @ $2.53 CPL & Messaging Costs (Slide 18)",
+    tags: ["Tourism", "International", "B2C"]
+  },
+  {
+    id: "grand-heights",
+    client: "Grand Heights (6th of October)",
+    industry: "Luxury Real Estate",
+    type: "B2C",
+    logo: getAssetUrl("logos/grand_heights_hd.png"),
+    headlineMetric: "97",
+    headlineMetricLabel: "High-Ticket Leads @ 175 EGP",
+    objective: "Generate high-intent buyer inquiries for luxury residential properties in 6th of October City, including Egyptian expatriates in Saudi Arabia.",
+    keyResults: [
+      { label: "Top Ad Set Leads", value: "97 Buyer Leads", context: "175.55 EGP Cost Per Lead" },
+      { label: "Audited Reach", value: "75,151", context: "Managed across 47 active campaigns" },
+      { label: "Total Spent", value: "69,732.71 EGP", context: "Rigorous lead qualification" }
+    ],
+    platforms: ["Meta Ads Manager", "Facebook Lead Forms", "Instagram"],
+    proofSlide: getAssetUrl("portfolio_slides/slide_16.png"),
+    proofTitle: "Meta Ads Dashboard: Grand Heights 47 Campaigns & 97 Leads (Slide 16)",
+    tags: ["Real Estate", "Luxury", "B2C"]
+  },
+  {
+    id: "ifcg",
+    client: "IFCG - Egypt",
+    industry: "Food Manufacturing & Distribution",
+    type: "B2B",
+    logo: getAssetUrl("logos/ifcg_hd.png"),
+    headlineMetric: "655K+",
+    headlineMetricLabel: "B2B Professionals Reached",
+    objective: "Generate commercial distribution inquiries by targeting food wholesalers, retail chains, and foodservice procurement directors across Egypt and MENA.",
+    keyResults: [
+      { label: "Total Reach", value: "655,556", context: "Across 23 performance campaigns" },
+      { label: "Total Spend", value: "177,979.71 EGP", context: "Targeted commercial distribution" },
+      { label: "Distributor Leads", value: "34+ Bulk RFQs", context: "High-value commercial partnerships" }
+    ],
+    platforms: ["Meta Ads", "Instagram B2B", "Audience Network"],
+    proofSlide: getAssetUrl("portfolio_slides/slide_17.png"),
+    proofTitle: "Meta Ads Dashboard: IFCG 655K Reach & 177K Spend (Slide 17)",
+    tags: ["B2B", "FMCG", "Distribution"]
+  },
+  {
+    id: "mastermind",
+    client: "MasterMind",
+    industry: "Marketing & Business Solutions",
+    type: "B2B",
+    logo: getAssetUrl("logos/mastermind_hd.png"),
+    headlineMetric: "UAE & GCC",
+    headlineMetricLabel: "Executive Pipeline",
+    objective: "Capture corporate decision-makers and founders seeking strategic marketing solutions across the UAE and Gulf region.",
+    keyResults: [
+      { label: "Target Market", value: "UAE & GCC", context: "Corporate business decision-makers" },
+      { label: "Lead Caliber", value: "C-Level & Founders", context: "Direct corporate inquiries" },
+      { label: "Optimization", value: "Audience Segmentation", context: "Continuous creative iteration" }
+    ],
+    platforms: ["Meta Ads", "LinkedIn", "Instagram"],
+    proofSlide: getAssetUrl("portfolio_slides/slide_19.png"),
+    proofTitle: "GCC & UAE Campaign Performance Breakdown (Slide 19)",
+    tags: ["B2B", "UAE", "GCC"]
+  },
+  {
+    id: "cardip",
+    client: "CarDip (Saudi Arabia)",
+    industry: "Automotive Customization",
+    type: "B2C",
+    logo: getAssetUrl("logos/cardip_hd.png"),
+    headlineMetric: "2,895+",
+    headlineMetricLabel: "Add to Basket Actions",
+    objective: "Drive demand for peelable automotive paint and luxury vehicle protection across Saudi Arabia through high-volume Snapchat and TikTok campaigns.",
+    keyResults: [
+      { label: "Snapchat Conversions", value: "2,895+ Add to Cart", context: "1,575 Ramadan adds ($1.23) + 1,320 Jan ($1.27)" },
+      { label: "Snapchat Spend", value: "$5,148.48", context: "Delivering catalog e-commerce orders" },
+      { label: "TikTok KSA Sales", value: "142 Purchases", context: "70.85 SAR Cost Per Conversion" }
+    ],
+    platforms: ["Snapchat Ads", "TikTok Ads Manager", "Meta Ads"],
+    proofSlide: getAssetUrl("portfolio_slides/slide_24.png"),
+    proofTitle: "Snapchat Ads Manager: $5,148 Spent & 2,895+ Add to Basket (Slide 24)",
+    tags: ["Automotive", "Saudi Arabia", "Snapchat", "TikTok"]
+  },
+  {
+    id: "expo-trust-trade",
+    client: "Expo Trust Trade (E.T.T)",
+    industry: "International Trade & B2B Export",
+    type: "B2B",
+    logo: getAssetUrl("logos/ett_hd.png"),
+    headlineMetric: "Global B2B",
+    headlineMetricLabel: "Export Trade Pipeline",
+    objective: "Generate commercial trade inquiries and international buyer leads for high-volume export and cross-border distribution.",
+    keyResults: [
+      { label: "Market Reach", value: "International Importers", context: "Pyramids & global trading corridors" },
+      { label: "Lead Pipeline", value: "Verified B2B RFQs", context: "Commercial buyer acquisition" },
+      { label: "Brand Presence", value: "Trade Leader", context: "Positioned among premier export partners" }
+    ],
+    platforms: ["Meta Ads", "LinkedIn Campaign Manager", "B2B Lead Forms"],
+    proofSlide: getAssetUrl("portfolio_slides/slide_17.png"),
+    proofTitle: "B2B Trade & Commercial Pipeline Performance (Slide 17)",
+    tags: ["B2B", "Export", "Trade", "Global"]
   },
   {
     id: "concrete-surgeons",
@@ -132,101 +247,6 @@ export const PROJECTS: Project[] = [
     proofSlide: getAssetUrl("portfolio_slides/slide_17.png"),
     proofTitle: "B2B Lead Sets & Audience Targeting Performance (Slide 17)",
     tags: ["B2B", "Construction", "Lead Gen"]
-  },
-  {
-    id: "united-guides-travel",
-    client: "United Guides Travel (UGT)",
-    industry: "Inbound Tourism & Tours",
-    type: "B2C",
-    logo: getAssetUrl("logos/ugt_logo.png"),
-    headlineMetric: "622",
-    headlineMetricLabel: "Leads at $2.53 CPL",
-    objective: "Acquire high-intent international tourists searching for Egypt travel experiences while maximizing ROAS and minimizing acquisition costs.",
-    keyResults: [
-      { label: "Verified Leads", value: "622 Leads", context: "$2.53 average Cost Per Lead" },
-      { label: "Messaging Leads", value: "188+ Inquiries", context: "$1.93 – $2.85 per engaged conversation" },
-      { label: "Campaign Reach", value: "292,399", context: "$2,200.22 total spend" }
-    ],
-    platforms: ["Meta Ads", "Instagram Ads", "Messenger Funnels"],
-    proofSlide: getAssetUrl("portfolio_slides/slide_18.png"),
-    proofTitle: "Meta Ads Dashboard: 622 Leads @ $2.53 CPL & Messaging Costs (Slide 18)",
-    tags: ["Tourism", "International", "B2C"]
-  },
-  {
-    id: "grand-heights",
-    client: "Grand Heights (6th of October)",
-    industry: "Luxury Real Estate",
-    type: "B2C",
-    logo: getAssetUrl("logos/grand_heights_logo.png"),
-    headlineMetric: "97",
-    headlineMetricLabel: "High-Ticket Leads @ 175 EGP",
-    objective: "Generate high-intent buyer inquiries for luxury residential properties in 6th of October City, including Egyptian expatriates in Saudi Arabia.",
-    keyResults: [
-      { label: "Top Ad Set Leads", value: "97 Buyer Leads", context: "175.55 EGP Cost Per Lead" },
-      { label: "Audited Reach", value: "75,151", context: "Managed across 47 active campaigns" },
-      { label: "Total Spent", value: "69,732.71 EGP", context: "Rigorous lead qualification" }
-    ],
-    platforms: ["Meta Ads Manager", "Facebook Lead Forms", "Instagram"],
-    proofSlide: getAssetUrl("portfolio_slides/slide_16.png"),
-    proofTitle: "Meta Ads Dashboard: Grand Heights 47 Campaigns & 97 Leads (Slide 16)",
-    tags: ["Real Estate", "Luxury", "B2C"]
-  },
-  {
-    id: "ifcg",
-    client: "IFCG - Egypt",
-    industry: "Food Manufacturing & Distribution",
-    type: "B2B",
-    logo: getAssetUrl("logos/ifcg_logo.png"),
-    headlineMetric: "655K+",
-    headlineMetricLabel: "B2B Professionals Reached",
-    objective: "Generate commercial distribution inquiries by targeting food wholesalers, retail chains, and foodservice procurement directors across Egypt and MENA.",
-    keyResults: [
-      { label: "Total Reach", value: "655,556", context: "Across 23 performance campaigns" },
-      { label: "Total Spend", value: "177,979.71 EGP", context: "Targeted commercial distribution" },
-      { label: "Distributor Leads", value: "34+ Bulk RFQs", context: "High-value commercial partnerships" }
-    ],
-    platforms: ["Meta Ads", "Instagram B2B", "Audience Network"],
-    proofSlide: getAssetUrl("portfolio_slides/slide_17.png"),
-    proofTitle: "Meta Ads Dashboard: IFCG 655K Reach & 177K Spend (Slide 17)",
-    tags: ["B2B", "FMCG", "Distribution"]
-  },
-  {
-    id: "mastermind",
-    client: "MasterMind",
-    industry: "Marketing & Business Solutions",
-    type: "B2B",
-    logo: getAssetUrl("logos/mastermind_logo.png"),
-    headlineMetric: "UAE & GCC",
-    headlineMetricLabel: "Executive Pipeline",
-    objective: "Capture corporate decision-makers and founders seeking strategic marketing solutions across the UAE and Gulf region.",
-    keyResults: [
-      { label: "Target Market", value: "UAE & GCC", context: "Corporate business decision-makers" },
-      { label: "Lead Caliber", value: "C-Level & Founders", context: "Direct corporate inquiries" },
-      { label: "Optimization", value: "Audience Segmentation", context: "Continuous creative iteration" }
-    ],
-    platforms: ["Meta Ads", "LinkedIn", "Instagram"],
-    proofSlide: getAssetUrl("portfolio_slides/slide_19.png"),
-    proofTitle: "GCC & UAE Campaign Performance Breakdown (Slide 19)",
-    tags: ["B2B", "UAE", "GCC"]
-  },
-  {
-    id: "cardip",
-    client: "CarDip (Saudi Arabia)",
-    industry: "Automotive Customization",
-    type: "B2C",
-    logo: getAssetUrl("logos/cardip_logo.png"),
-    headlineMetric: "2,895+",
-    headlineMetricLabel: "Add to Basket Actions",
-    objective: "Drive demand for peelable automotive paint and luxury vehicle protection across Saudi Arabia through high-volume Snapchat and TikTok campaigns.",
-    keyResults: [
-      { label: "Snapchat Conversions", value: "2,895+ Add to Cart", context: "1,575 Ramadan adds ($1.23) + 1,320 Jan ($1.27)" },
-      { label: "Snapchat Spend", value: "$5,148.48", context: "Delivering catalog e-commerce orders" },
-      { label: "TikTok KSA Sales", value: "142 Purchases", context: "70.85 SAR Cost Per Conversion" }
-    ],
-    platforms: ["Snapchat Ads", "TikTok Ads Manager", "Meta Ads"],
-    proofSlide: getAssetUrl("portfolio_slides/slide_24.png"),
-    proofTitle: "Snapchat Ads Manager: $5,148 Spent & 2,895+ Add to Basket (Slide 24)",
-    tags: ["Automotive", "Saudi Arabia", "Snapchat", "TikTok"]
   }
 ];
 

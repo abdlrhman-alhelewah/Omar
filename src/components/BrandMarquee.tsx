@@ -10,17 +10,17 @@ export const BrandMarquee: React.FC = () => {
         </p>
 
         {/* Clean Logo Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4 items-center">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 xl:grid-cols-8 gap-3.5 items-center">
           {CLIENT_LOGOS.map((client) => (
             <div
               key={client.name}
               className="p-3 bg-white border border-slate-200/90 rounded-xl shadow-xs flex flex-col items-center justify-center text-center hover:border-emerald-500 hover:shadow-sm transition-all duration-200 h-24"
             >
-              <div className="h-10 w-full flex items-center justify-center mb-1.5 overflow-hidden">
+              <div className="h-11 w-full flex items-center justify-center mb-1 overflow-hidden">
                 <img
                   src={client.logo}
                   alt={`${client.name} Logo`}
-                  className="max-h-full max-w-[85%] object-contain"
+                  className="max-h-full max-w-[88%] object-contain"
                   referrerPolicy="no-referrer"
                 />
               </div>

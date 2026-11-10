@@ -2,5 +2,7 @@
   "name": "Omar Mohamed ElBasstawisy - Media Buyer Portfolio",
   "description": "Professional portfolio of Omar Mohamed Elsayed ElBasstawisy: Results-driven Media Buyer & Digital Marketer with 2 years of experience in Meta, Google, and TikTok Ads.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
