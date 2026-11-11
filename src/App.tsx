@@ -14,6 +14,7 @@ import { FloatingBackToTop } from './components/FloatingBackToTop';
 
 export default function App() {
   const [cvModalOpen, setCvModalOpen] = useState(false);
+  const [highlightedProjectId, setHighlightedProjectId] = useState<string | null>(null);
   const [lightboxState, setLightboxState] = useState<{
     isOpen: boolean;
     slideUrl: string;
@@ -23,6 +24,13 @@ export default function App() {
     slideUrl: '',
     caption: ''
   });
+
+  const handleSelectProject = (projectId: string) => {
+    setHighlightedProjectId(projectId);
+    setTimeout(() => {
+      setHighlightedProjectId(null);
+    }, 2500);
+  };
 
   const handleOpenProofSlide = (slideUrl: string, caption: string) => {
     setLightboxState({
@@ -46,11 +54,14 @@ export default function App() {
         {/* 1. Hero Section */}
         <HeroSection onOpenCvModal={() => setCvModalOpen(true)} />
 
-        {/* 2. Brand Logos Showcase (IHF, Concrete Surgeons, UGT, Grand Heights, IFCG, MasterMind, CarDip) */}
-        <BrandMarquee />
+        {/* 2. Brand Logos Showcase (Clickable links to case studies) */}
+        <BrandMarquee onSelectProject={handleSelectProject} />
 
         {/* 3. Featured Client Case Studies with Brand Logos & On-Demand Proof */}
-        <ProjectsSection onSelectProofSlide={handleOpenProofSlide} />
+        <ProjectsSection
+          onSelectProofSlide={handleOpenProofSlide}
+          highlightedProjectId={highlightedProjectId}
+        />
 
         {/* 4. Audited Multi-Platform Performance (Meta, TikTok, Snapchat, LinkedIn) */}
         <CampaignPerformanceSection onSelectProofSlide={handleOpenProofSlide} />

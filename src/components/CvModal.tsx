@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { X, Download, Copy, Check, FileText, GraduationCap, Briefcase, Award } from 'lucide-react';
-import { PERSONAL_INFO, WORK_EXPERIENCE, EDUCATION_LIST, CV_RESPONSIBILITIES, CV_SKILLS } from '../data/portfolioData';
+import { X, Download, Copy, Check, FileText, GraduationCap, Briefcase, Award, Layers, ExternalLink } from 'lucide-react';
+import { PERSONAL_INFO, WORK_EXPERIENCE, EDUCATION_LIST, CV_RESPONSIBILITIES, CV_SKILLS, CV_SKILLS_CATEGORIZED } from '../data/portfolioData';
+import { downloadCvPdf } from '../utils/downloadPdf';
 
 interface CvModalProps {
   isOpen: boolean;
@@ -9,6 +10,7 @@ interface CvModalProps {
 
 export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
   const [copied, setCopied] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
 
   if (!isOpen) return null;
 
@@ -19,33 +21,26 @@ ${PERSONAL_INFO.title}
 Email: ${PERSONAL_INFO.secondaryEmail} / ${PERSONAL_INFO.email}
 Phone: ${PERSONAL_INFO.phoneDisplay} (${PERSONAL_INFO.phone})
 LinkedIn: ${PERSONAL_INFO.linkedinUrl}
-Address: ${PERSONAL_INFO.location}
+Location: ${PERSONAL_INFO.location}
 Date of Birth: ${PERSONAL_INFO.dateOfBirth} | Nationality: Egyptian | Status: Single
 
-SUMMARY:
+PROFESSIONAL SUMMARY:
 ${PERSONAL_INFO.summary}
 
-EDUCATION:
-Bachelor of Science: Faculty of Information system and Management
-From 2016 to 2020 Thebes Academy El Maadi
-Graduation Project: Hospital Management System (A+ Grade)
+CORE SKILLS:
+${CV_SKILLS_CATEGORIZED.map(cat => `${cat.category}: ${cat.skills.join(' | ')}`).join('\n')}
 
-CERTIFICATES:
-- Diploma Digital Marketing - Media Buyer
-- English Course B1
-
-LANGUAGES:
-- Arabic: Native language
-- English: Good command of both written and spoken English
-
-WORK EXPERIENCE:
+PROFESSIONAL EXPERIENCE:
 ${WORK_EXPERIENCE.map(e => `${e.title} at ${e.company} (${e.location}) [${e.period}]\n- ${e.description}\n- ${e.achievements.join('\n- ')}`).join('\n\n')}
 
-JOB RESPONSIBILITIES:
-${CV_RESPONSIBILITIES.map(r => `- ${r}`).join('\n')}
+EDUCATION:
+- Bachelor’s Degree, Information Systems and Management | Thebes Academy, Maadi | 2016 – 2020
+  Graduation Project: Hospital Management System | Grade: A+
 
-SKILLS:
-${CV_SKILLS.map(s => `- ${s}`).join('\n')}
+TRAINING & LANGUAGES:
+- Digital Marketing / Media Buying Diploma
+- English Course: B1
+- Arabic: Native | English: B1
     `.trim();
 
     navigator.clipboard.writeText(text);
@@ -53,13 +48,14 @@ ${CV_SKILLS.map(s => `- ${s}`).join('\n')}
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleDownloadPdf = () => {
-    const link = document.createElement('a');
-    link.href = PERSONAL_INFO.cvPdfPath;
-    link.download = 'CV_Omar_Mohamed_Elsayed_ElBasstawisy.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const handleDownloadPdf = async (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    setIsDownloading(true);
+    try {
+      await downloadCvPdf(PERSONAL_INFO.cvPdfPath, 'Omar_ElBasstawisy_CV_Media_Buyer.pdf');
+    } finally {
+      setIsDownloading(false);
+    }
   };
 
   return (
@@ -99,13 +95,18 @@ ${CV_SKILLS.map(s => `- ${s}`).join('\n')}
               )}
             </button>
 
-            <button
+            <a
+              href={PERSONAL_INFO.cvPdfPath}
+              download="Omar_ElBasstawisy_CV_Media_Buyer.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={handleDownloadPdf}
               className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-white bg-slate-900 hover:bg-emerald-700 rounded-lg transition-colors cursor-pointer shadow-xs"
+              title="Download official PDF to your device"
             >
               <Download className="w-3.5 h-3.5" />
-              <span>Download PDF</span>
-            </button>
+              <span>{isDownloading ? 'Downloading...' : 'Download PDF'}</span>
+            </a>
 
             <button
               onClick={onClose}
@@ -156,23 +157,45 @@ ${CV_SKILLS.map(s => `- ${s}`).join('\n')}
                 <GraduationCap className="w-4 h-4 text-emerald-700" />
                 <span>Education</span>
               </h4>
-              <p className="text-xs font-bold text-slate-900">Bachelor of Science: Faculty of Information system and Management</p>
-              <p className="text-xs text-emerald-800 mt-0.5 font-medium">From 2016 to 2020 Thebes Academy El Maadi</p>
+              <p className="text-xs font-bold text-slate-900">Bachelor’s Degree, Information Systems and Management</p>
+              <p className="text-xs text-emerald-800 mt-0.5 font-medium">Thebes Academy, Maadi · 2016 – 2020</p>
               <p className="text-xs text-slate-600 mt-1">Graduation Project: Hospital Management System (A+ Grade)</p>
             </div>
 
             <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
               <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 flex items-center gap-1.5">
                 <Award className="w-4 h-4 text-emerald-700" />
-                <span>Certificates</span>
+                <span>Training & Languages</span>
               </h4>
               <ul className="text-xs text-slate-700 space-y-1.5">
-                <li>• Diploma Digital Marketing - Media Buyer</li>
-                <li>• English Course B1</li>
+                <li>• Digital Marketing / Media Buying Diploma</li>
+                <li>• English Course: B1</li>
               </ul>
               <div className="mt-2.5 pt-2 border-t border-slate-200 text-[11px] text-slate-500">
-                <strong>Languages:</strong> Arabic (Native) · English (Good command)
+                <strong>Languages:</strong> Arabic (Native) · English (B1)
               </div>
+            </div>
+          </div>
+
+          {/* Core Skills (Categorized from CV) */}
+          <div>
+            <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
+              <Layers className="w-4 h-4 text-emerald-700" />
+              <span>Core Skills (CV Breakdown)</span>
+            </h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {CV_SKILLS_CATEGORIZED.map((cat, idx) => (
+                <div key={idx} className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs">
+                  <span className="font-bold text-slate-900 block mb-1.5">{cat.category}</span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {cat.skills.map((skill, sIdx) => (
+                      <span key={sIdx} className="px-2 py-0.5 rounded-md bg-white border border-slate-200 text-slate-700 text-[11px] font-medium">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -180,7 +203,7 @@ ${CV_SKILLS.map(s => `- ${s}`).join('\n')}
           <div>
             <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-3 flex items-center gap-1.5">
               <Briefcase className="w-4 h-4 text-emerald-700" />
-              <span>Work Experience</span>
+              <span>Professional Experience</span>
             </h4>
             <div className="space-y-3.5">
               {WORK_EXPERIENCE.map((exp) => (
@@ -206,10 +229,10 @@ ${CV_SKILLS.map(s => `- ${s}`).join('\n')}
             </div>
           </div>
 
-          {/* Job Responsibilities */}
+          {/* Key Capabilities */}
           <div>
             <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-              Job Responsibilities (CV)
+              Media Buying & Operational Responsibilities
             </h4>
             <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5 text-xs text-slate-600">
               {CV_RESPONSIBILITIES.map((r, i) => (
@@ -223,17 +246,35 @@ ${CV_SKILLS.map(s => `- ${s}`).join('\n')}
         </div>
 
         {/* Modal Footer */}
-        <div className="px-6 py-4 border-t border-slate-200 bg-slate-50 flex items-center justify-between">
+        <div className="px-6 py-4 border-t border-slate-200 bg-slate-50 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <span className="text-[11px] text-slate-500 font-mono">
-            Source: CV_Omar_Mohamed_Elsayed_ElBasstawisy_cee73ba6.pdf
+            Source: Omar_ElBasstawisy_CV_Media_Buyer.pdf
           </span>
-          <button
-            onClick={handleDownloadPdf}
-            className="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-white bg-slate-900 hover:bg-emerald-700 rounded-lg transition-colors cursor-pointer"
-          >
-            <Download className="w-3.5 h-3.5" />
-            <span>Download Official PDF</span>
-          </button>
+          <div className="flex items-center gap-2">
+            <a
+              href={PERSONAL_INFO.cvPdfPath}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-slate-700 hover:text-slate-900 bg-white hover:bg-slate-100 border border-slate-300 rounded-lg transition-colors cursor-pointer"
+              title="Open PDF directly in a new browser tab"
+            >
+              <ExternalLink className="w-3.5 h-3.5 text-slate-500" />
+              <span>Open in Tab</span>
+            </a>
+
+            <a
+              href={PERSONAL_INFO.cvPdfPath}
+              download="Omar_ElBasstawisy_CV_Media_Buyer.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleDownloadPdf}
+              className="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-white bg-slate-900 hover:bg-emerald-700 rounded-lg transition-colors cursor-pointer shadow-xs"
+              title="Save official PDF to computer or phone"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>{isDownloading ? 'Downloading...' : 'Download Official PDF'}</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>

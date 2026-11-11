@@ -1,13 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ExternalLink, Eye, CheckCircle2, ChevronRight, Layers } from 'lucide-react';
 import { PROJECTS, Project } from '../data/portfolioData';
 
 interface ProjectsSectionProps {
   onSelectProofSlide: (slideUrl: string, caption: string) => void;
+  highlightedProjectId?: string | null;
 }
 
-export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProofSlide }) => {
+export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProofSlide, highlightedProjectId }) => {
   const [activeFilter, setActiveFilter] = useState<'all' | 'b2b' | 'b2c'>('all');
+
+  useEffect(() => {
+    if (highlightedProjectId) {
+      setActiveFilter('all');
+      const timer = setTimeout(() => {
+        const el = document.getElementById(`project-${highlightedProjectId}`);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [highlightedProjectId]);
 
   const filteredProjects = PROJECTS.filter(p => {
     if (activeFilter === 'all') return true;
@@ -70,10 +84,17 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProofS
 
         {/* Executive Case Study Grid (Brand Logos, Data, and On-Demand Proof Modal) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((project) => (
+          {filteredProjects.map((project) => {
+            const isHighlighted = highlightedProjectId === project.id;
+            return (
             <div
               key={project.id}
-              className="bg-white border border-slate-200/90 rounded-2xl p-6 shadow-xs hover:border-slate-300 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+              id={`project-${project.id}`}
+              className={`scroll-mt-28 bg-white border rounded-2xl p-6 shadow-xs hover:border-slate-300 hover:shadow-md transition-all duration-300 flex flex-col justify-between ${
+                isHighlighted
+                  ? 'border-emerald-500 ring-2 ring-emerald-500 shadow-lg -translate-y-1'
+                  : 'border-slate-200/90'
+              }`}
             >
               <div>
                 {/* Top: Brand Logo & Segment Badge */}
@@ -148,7 +169,8 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProofS
                 </button>
               </div>
             </div>
-          ))}
+          );
+        })}
         </div>
       </div>
     </section>

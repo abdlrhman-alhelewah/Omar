@@ -1,12 +1,24 @@
-import React from 'react';
-import { ArrowDown, Download, CheckCircle2, ShieldCheck, ArrowUpRight, Linkedin } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowDown, Download, CheckCircle2, ShieldCheck, ArrowUpRight, Linkedin, FileText } from 'lucide-react';
 import { PERSONAL_INFO, CORE_METRICS } from '../data/portfolioData';
+import { downloadCvPdf } from '../utils/downloadPdf';
 
 interface HeroSectionProps {
   onOpenCvModal: () => void;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCvModal }) => {
+  const [downloading, setDownloading] = useState(false);
+
+  const handleDownload = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    setDownloading(true);
+    try {
+      await downloadCvPdf(PERSONAL_INFO.cvPdfPath, 'Omar_ElBasstawisy_CV_Media_Buyer.pdf');
+    } finally {
+      setDownloading(false);
+    }
+  };
   return (
     <section id="overview" className="relative pt-32 pb-16 md:pt-36 md:pb-24 bg-white border-b border-slate-200/80">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -60,12 +72,26 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCvModal }) => {
                 <ArrowUpRight className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100 transition-opacity" />
               </a>
 
+              <a
+                href={PERSONAL_INFO.cvPdfPath}
+                download="Omar_ElBasstawisy_CV_Media_Buyer.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={handleDownload}
+                className="px-4 py-3 text-sm font-semibold text-white bg-emerald-700 hover:bg-emerald-800 rounded-lg transition-colors flex items-center gap-2 cursor-pointer shadow-xs group"
+                title="Download Omar's official Media Buyer CV (PDF)"
+              >
+                <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
+                <span>{downloading ? 'Downloading...' : 'Download CV'}</span>
+              </a>
+
               <button
                 onClick={onOpenCvModal}
                 className="px-4 py-3 text-sm font-semibold text-slate-800 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-lg transition-colors flex items-center gap-2 cursor-pointer"
+                title="Review full CV details on-screen"
               >
-                <Download className="w-4 h-4 text-emerald-700" />
-                <span>CV (PDF)</span>
+                <FileText className="w-4 h-4 text-slate-600" />
+                <span>Review CV</span>
               </button>
 
               <a

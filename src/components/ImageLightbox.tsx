@@ -50,9 +50,11 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
           <div className="flex items-center gap-2">
             <a
               href={slideUrl}
-              download="ad_manager_proof.png"
+              download
+              target="_blank"
+              rel="noopener noreferrer"
               className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-200 transition-colors"
-              title="Download image"
+              title="Open / Download full resolution image"
             >
               <Download className="w-4 h-4" />
             </a>
